@@ -79,14 +79,14 @@ public class Producto {
     
         public void agregarProducto(){
         try{
-            String sql = "insert into PRODUCT (nombre, marca, categoria, precio, stock, fecha) values('"+nombre+"', '"+marca+"','"+categoria+"', "+precio+", "+stock+",'"+fecha_adquisicion+"')";
+            String sql = "insert into PRODUCT (nombre, marca, categoria, precio, stock, fecha_adquisicion) values('"+nombre+"', '"+marca+"','"+categoria+"', "+precio+", "+stock+",'"+fecha_adquisicion+"')";
             ConexionBD.conectar();
             ConexionBD.sentencia = ConexionBD.conn.prepareStatement(sql);
             ConexionBD.sentencia.execute(sql);
             System.out.println("Los datos fueron almacenados.");
             ConexionBD.desconectar();
         }catch (Exception e){
-            System.out.println("Error al agregar pelicula");
+            System.out.println("Error al agregar el producto: " + e.getMessage());
         }
     }
     

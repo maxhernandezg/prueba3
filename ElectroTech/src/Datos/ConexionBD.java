@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class ConexionBD {
     // NOMBRE AL CREAR LA BASE DE DATOS CON MYSQL
-    public static String bd = "inventoryDB";
+    public static String bd = "inventorydb";
     // USUARIO DE MYSQL 
     public static String login = "root";
     // CONTRASEÑA DE MYSQL
