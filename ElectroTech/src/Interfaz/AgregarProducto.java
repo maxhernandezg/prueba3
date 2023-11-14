@@ -5,6 +5,7 @@
 package Interfaz;
 
 import Negocio.Producto;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Benjamin Peñailillo
@@ -108,6 +109,14 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
             }
         });
 
+        txtFecha.setText("(yyyy/mm/dd)");
+        txtFecha.setToolTipText("El formato debe ser (yyyy/mm/dd)");
+        txtFecha.setEnabled(false);
+        txtFecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtFechaMouseClicked(evt);
+            }
+        });
         txtFecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFechaActionPerformed(evt);
@@ -137,9 +146,9 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8)
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -152,10 +161,10 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(304, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                         .addComponent(btnLimpiar)
                         .addGap(98, 98, 98))))
         );
@@ -166,7 +175,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -265,6 +274,13 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 
                     Producto produ = new Producto(nombre, marca, categoria, precio, stock, fecha_adquisicion);
                     produ.agregarProducto();
+                    JOptionPane.showMessageDialog(this, "Producto agregado exitosamente","Confirmación",1);
+                    txtNombre.setText(""); 
+                    txtMarca.setText("");
+                    txtCategoria.setText("");
+                    txtPrecio.setText("");
+                    txtStock.setText("");
+                    txtFecha.setText("");
                 
                 }catch (NumberFormatException e){
                     System.out.println("LOS CAMPOS PRECIO Y CANTIDAD DEBEN SER NUMERICOS");
@@ -292,7 +308,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtStockActionPerformed
 
     private void txtFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtFechaActionPerformed
 
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
@@ -310,6 +326,10 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void txtFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFechaMouseClicked
+        this.txtFecha.setText("");
+    }//GEN-LAST:event_txtFechaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
