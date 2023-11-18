@@ -193,10 +193,10 @@ public class Producto {
             ConexionBD.conectar();
             ConexionBD.sentencia = ConexionBD.conn.prepareStatement(sql);
             ConexionBD.sentencia.execute(sql);
-            System.out.println("Pelicula Eliminada");
+            System.out.println("Producto Eliminada");
             ConexionBD.desconectar();
         }catch(Exception e){
-            System.out.println("Error al eliminar pelicula");
+            System.out.println("Error al eliminar Producto");
         }
     }
     

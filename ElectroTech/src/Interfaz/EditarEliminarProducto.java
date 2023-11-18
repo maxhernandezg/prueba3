@@ -37,6 +37,7 @@ public class EditarEliminarProducto extends javax.swing.JInternalFrame {
         this.lbl_ID.setText("");
         this.txtBuscarID.setText("");
         this.txtBuscarNombre.setText("");
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -309,7 +310,8 @@ public class EditarEliminarProducto extends javax.swing.JInternalFrame {
             product.setId(Integer.parseInt(this.txtBuscarID.getText()));
             product.buscarID();
             if(ConexionBD.buscarID){
-                this.txtBuscarNombre.setText(product.getNombre());
+                this.txtBuscarID.setText(String.valueOf(product.getId()));
+                this.txtNombre.setText(product.getNombre());
                 this.txtMarca.setText(product.getMarca());
                 this.txtCategoria.setText(product.getCategoria());
                 this.txtPrecio.setText(String.valueOf(product.getPrecio()));
@@ -334,7 +336,7 @@ public class EditarEliminarProducto extends javax.swing.JInternalFrame {
             product.buscarNombre();
             if(ConexionBD.buscarNombre){
                 this.txtBuscarID.setText(String.valueOf(product.getId()));
-                this.txtBuscarNombre.setText(product.getNombre());
+                this.txtNombre.setText(product.getNombre());
                 this.txtMarca.setText(product.getMarca());
                 this.txtCategoria.setText(product.getCategoria());
                 this.txtPrecio.setText(String.valueOf(product.getPrecio()));
