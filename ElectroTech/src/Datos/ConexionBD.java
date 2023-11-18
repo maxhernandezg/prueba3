@@ -23,6 +23,7 @@ public class ConexionBD {
     public static Statement sentencia;
     
     public static boolean buscarID;
+    public static boolean buscarNombre;
     
     public static void conectar(){
         try{
