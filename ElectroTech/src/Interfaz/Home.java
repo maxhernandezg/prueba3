@@ -12,6 +12,7 @@ public class Home extends javax.swing.JFrame {
     AgregarProducto agregarP = new AgregarProducto();
     EditarEliminarProducto editarP = new EditarEliminarProducto();
     EliminarProducto eliminarP = new EliminarProducto();
+    ListarProducto ListarP = new ListarProducto();
     
 
     /**
@@ -22,6 +23,7 @@ public class Home extends javax.swing.JFrame {
         this.add(agregarP);
         this.add(editarP);
         this.add(eliminarP);
+        this.add(ListarP);
     }
 
     
@@ -72,6 +74,11 @@ public class Home extends javax.swing.JFrame {
         jMenu1.add(jMenuItem4);
 
         jMenuItem5.setText("Listar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
@@ -119,6 +126,10 @@ public class Home extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         this.eliminarP.show();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        this.ListarP.show();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
