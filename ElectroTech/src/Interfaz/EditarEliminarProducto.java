@@ -69,8 +69,11 @@ public class EditarEliminarProducto extends javax.swing.JInternalFrame {
         btnActualizar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 51));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Modificar Producto");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -90,7 +93,7 @@ public class EditarEliminarProducto extends javax.swing.JInternalFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(153, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(187, 187, 187));
 
         btnBuscarID.setText("Buscar");
         btnBuscarID.addActionListener(new java.awt.event.ActionListener() {
@@ -106,8 +109,10 @@ public class EditarEliminarProducto extends javax.swing.JInternalFrame {
             }
         });
 
+        lblBuscarID.setForeground(new java.awt.Color(0, 0, 0));
         lblBuscarID.setText("ID:");
 
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Nombre:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -147,16 +152,22 @@ public class EditarEliminarProducto extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
+        lblID.setForeground(new java.awt.Color(0, 0, 0));
         lblID.setText("ID");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre:");
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Categoría:");
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Precio:");
 
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Cantidad:");
 
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Fecha:");
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -171,6 +182,7 @@ public class EditarEliminarProducto extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Marca:");
 
         lbl_ID.setText("...");
