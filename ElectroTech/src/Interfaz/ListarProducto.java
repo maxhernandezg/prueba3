@@ -233,7 +233,7 @@ public class ListarProducto extends javax.swing.JInternalFrame {
                 if (pInicio >= 0 && pFinal >= 0) {
                     
                     if (categoria.isEmpty()) {
-                        sql = "select * from prodcut where precio between "+pInicio+" and "+pFinal+"";
+                        sql = "select * from product where precio between "+pInicio+" and "+pFinal+"";
                         
                     } else {
                         sql = "select * from product where precio between "+pInicio+" and "+pFinal+" and categoria LIKE '%"+categoria+"%'";
