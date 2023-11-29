@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Datos;
+package Datos;//Define el paquete al que pertenece la clase
 
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.Connection;//Establece conexion con la base de datos
+import java.sql.Statement;//Procesa la sentencia sql
+import java.sql.DriverManager;//Maneja los controladores de la base de datos
+import java.sql.SQLException;//maneja las excepciones de la base de datos
 
 public class ConexionBD {
     // NOMBRE AL CREAR LA BASE DE DATOS CON MYSQL
@@ -23,11 +23,11 @@ public class ConexionBD {
     public static Statement sentencia;
     
     public static boolean buscarID;
-    public static boolean buscarNombre;
-    
+    public static boolean buscarNombre;//variables booleanas para buscar por id y nombre
+    //metodo que establece conexion con la base de datos
     public static void conectar(){
         try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");//carga un controlador de mysql
             // AQUI SE PROPORCIONA LA INFORMACION PARA ENTRAR A LA BASE DE DATOS (URL + USUARIO + CONTRASEÑA)
             conn = DriverManager.getConnection(url, login, pass);
             if (conn != null){
