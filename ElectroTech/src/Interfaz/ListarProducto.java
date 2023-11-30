@@ -243,23 +243,30 @@ public class ListarProducto extends javax.swing.JInternalFrame {
                 if (pInicio >= 0 || pFinal >= 0) {
                     
                     if (categoria.isEmpty()) {
-                        sql = "select * from product where precio between "+pInicio+" and "+pFinal+"";
-                        
-                    } else {
-                        sql = "select * from product where precio between "+pInicio+" and "+pFinal+" and categoria LIKE '%"+categoria+"%'";
+                        if(precioI.isEmpty()){
+                            sql = "select * from product where precio <= "+pFinal+"";
+                        }else if (precioF.isEmpty()){
+                            sql = "select * from product where precio >= "+pInicio+"";
+                        }
+     
+                    } else if (!categoria.isEmpty()){
+                        if(precioI.isEmpty()){
+                            sql = "select * from product where precio <= "+pFinal+" and categoria LIKE '%"+categoria+"%'";
+                        }else if (precioF.isEmpty()){
+                            sql = "select * from product where precio >= "+pInicio+" and categoria LIKE '%"+categoria+"%'";
+                        }else{
+                            sql = "select * from product where precio between "+pInicio+" and "+pFinal+" and categoria LIKE '%"+categoria+"%'";
                        
+                        }
                     }
+                    
                 }
-                if (!categoria.isEmpty()) {
-                    if (precioI.isEmpty() && precioF.isEmpty()) {
-                        sql = "select * from product where categoria LIKE '%"+categoria+"%'";
-                        
-                    } else {
-                        sql = "select * from product where precio between "+pInicio+" and "+pFinal+" and categoria LIKE '%"+categoria+"%'";
-                       
-                    }
+                // Esta línea maneja el caso donde se busca solo por categoría
+                if (!categoria.isEmpty() && precioI.isEmpty() && precioF.isEmpty()) {
+                    sql = "SELECT * FROM product WHERE categoria LIKE '%" + categoria + "%'";
                 }
             }
+            
             
             if(!sql.isEmpty()){
                 try{
