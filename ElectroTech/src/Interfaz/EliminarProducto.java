@@ -28,6 +28,8 @@ public class EliminarProducto extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     
+    //Este limpiar funciona de manera de que cuando el usuario complete una accion como es el actualizar 
+    //limpie todos los campos del formulario de la interfaz
     public void limpiar(){
         this.txtBuscarNombre.setText("");
         this.txtBuscarID.setText("");
@@ -262,10 +264,15 @@ public class EliminarProducto extends javax.swing.JInternalFrame {
 
     private void btnBuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIDActionPerformed
         try{
+            // Crea una instancia de Producto con valores predeterminados.
             Producto product = new Producto("x","x","x",0,0,"x");
+            // Establece el ID del producto según el valor ingresado en el campo de texto.
             product.setId(Integer.parseInt(this.txtBuscarID.getText()));
+            // Intenta buscar el producto por ID.
             product.buscarID();
+            // Verifica si se encontró el producto.
             if(ConexionBD.buscarID){
+                // Actualiza los campos del formulario con la información del producto.
                 this.txtBuscarID.setText(String.valueOf(product.getId()));
                 this.txtBuscarNombre.setText(product.getNombre());
                 this.lbl_Marca.setText(product.getMarca());
@@ -274,18 +281,24 @@ public class EliminarProducto extends javax.swing.JInternalFrame {
                 this.lbl_Stock.setText(String.valueOf(product.getStock()));
                 this.lbl_Fecha.setText(product.getFecha_adquisicion());
             }else{
+                // Muestra un mensaje de error si el producto no está en la base de datos.
                 JOptionPane.showMessageDialog(this, "Producto no encontrado","Buscar",2);
             }
         }catch(Exception e){
+            // Manejo de errores genérico.
             System.out.println("Error");
         }
     }//GEN-LAST:event_btnBuscarIDActionPerformed
 
     private void btnBuscarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNombreActionPerformed
         try{
+            // Crea una instancia de Producto con el nombre ingresado en el campo de texto.
             Producto product = new Producto(this.txtBuscarNombre.getText(),"x","x",0,0,"x");
+            // Intenta buscar el producto por nombre.
             product.buscarNombre();
+            // Verifica si se encontró el producto.
             if(ConexionBD.buscarNombre){
+                // Actualiza los campos del formulario con la información del producto.
                 this.txtBuscarID.setText(String.valueOf(product.getId()));
                 this.txtBuscarNombre.setText(product.getNombre());
                 this.lbl_Marca.setText(product.getMarca());
@@ -294,31 +307,40 @@ public class EliminarProducto extends javax.swing.JInternalFrame {
                 this.lbl_Stock.setText(String.valueOf(product.getStock()));
                 this.lbl_Fecha.setText(product.getFecha_adquisicion());
             }else{
+                // Muestra un mensaje de error si el producto no está en la base de datos.
                 JOptionPane.showMessageDialog(this, "Producto no encontrado","Buscar",2);
             }
         }catch(Exception e){
+            // Manejo de errores genérico.
             System.out.println("Error");
         }
     }//GEN-LAST:event_btnBuscarNombreActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try{
+            // Crea una instancia de Producto con valores predeterminados.
             Producto producto = new Producto("x","x","x",0,0,"x");
+            // Establece el ID del producto según el valor ingresado en el campo de texto.
             producto.setId(Integer.parseInt(this.txtBuscarID.getText()));
+            // Intenta buscar el producto por ID antes de eliminarlo.
             producto.buscarID();
+            // Verifica si se encontró el producto.
             if(ConexionBD.buscarID){
-                         
+                // Elimina el producto de la base de datos.         
                 producto.eliminar();
                 
+                // Muestra un mensaje indicando que el producto ha sido eliminado.
                 JOptionPane.showMessageDialog(this, "Producto Eliminado","Eliminar",2);
-                limpiar();
+                limpiar();// Limpia los campos del formulario.
             }else{
+                // Muestra un mensaje de error si el producto no está en la base de datos.
                 JOptionPane.showMessageDialog(this, "Producto no Eliminado","Eliminar",2);
-                limpiar();
+                limpiar();// Limpia los campos del formulario.
             }
         }catch(Exception e){
+            // Manejo de errores genérico.
             System.out.println("Error");
-            limpiar();
+            limpiar();// Limpia los campos del formulario.
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 

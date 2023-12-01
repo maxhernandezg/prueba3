@@ -211,28 +211,40 @@ public class ListarProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecioFinActionPerformed
 
+     /**
+     * Acción ejecutada al hacer clic en el botón "Limpiar".
+     * Limpia los campos de texto en el formulario.
+     */
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         this.txtPrecioInicio.setText("");
         this.txtPrecioFin.setText("");
         this.txtCategoria.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    /**
+     * Acción ejecutada al hacer clic en el botón "Listar".
+     * Lista los productos según la categoría y rango de precios especificados.
+     * Muestra los resultados en una tabla.
+     */
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-       ConexionBD.buscarID=false;
+       ConexionBD.buscarID=false; // Establece la variable de búsqueda de ID a false.
+        // Obtiene los valores de los campos de texto en el formulario.
             String categoria = txtCategoria.getText(); 
             String precioI = txtPrecioInicio.getText();
             String precioF = txtPrecioFin.getText();
             
             
-            
+            // Construye la consulta SQL para listar productos según los criterios.
             String sql = "SELECT * FROM product";
             if (categoria.isEmpty() && precioI.isEmpty() && precioF.isEmpty()){
+                // Si no se especifican criterios, selecciona todos los productos.
                  sql = "SELECT * FROM product";
                  
                  
             }else{
                 int pInicio=0;
                 int pFinal=0;
+                 // Convierte los valores de precio a enteros si están especificados.
             
                 if (!precioI.isEmpty() && !precioF.isEmpty()){
                     pInicio = Integer.parseInt(precioI);
@@ -241,8 +253,8 @@ public class ListarProducto extends javax.swing.JInternalFrame {
                  
                 
                 if (pInicio >= 0 || pFinal >= 0) {
-                    
                     if (categoria.isEmpty()) {
+                        // Si no se especifica categoría, filtra solo por rango de precios.
                         if(precioI.isEmpty()){
                             sql = "select * from product where precio <= "+pFinal+"";
                         }else if (precioF.isEmpty()){
@@ -250,6 +262,7 @@ public class ListarProducto extends javax.swing.JInternalFrame {
                         }
      
                     } else if (!categoria.isEmpty()){
+                    // Si se especifica categoría, filtra por categoría y, opcionalmente, por rango de precios.
                         if(precioI.isEmpty()){
                             sql = "select * from product where precio <= "+pFinal+" and categoria LIKE '%"+categoria+"%'";
                         }else if (precioF.isEmpty()){
@@ -267,7 +280,7 @@ public class ListarProducto extends javax.swing.JInternalFrame {
                 }
             }
             
-            
+            // Ejecuta la consulta SQL y muestra los resultados en la tabla.
             if(!sql.isEmpty()){
                 try{
                     ConexionBD.conectar();
@@ -278,6 +291,7 @@ public class ListarProducto extends javax.swing.JInternalFrame {
                     DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
                     modelo.setRowCount(0);
                     if (modelo.getColumnCount() == 0) {
+                        // Agrega columnas a la tabla si aún no tiene.
                         modelo.addColumn("ID");
                         modelo.addColumn("Nombre");
                         modelo.addColumn("Marca");
@@ -288,6 +302,7 @@ public class ListarProducto extends javax.swing.JInternalFrame {
                     }
                    
 
+                    // Rellena la tabla con los resultados de la consulta.
                     Object [] fila = new Object[7];
                     while (res.next()){
                         for (int i = 0; i<7; i++){

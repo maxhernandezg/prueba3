@@ -6,6 +6,11 @@ package Interfaz;
 
 import Negocio.Producto;
 /**
+ * * Interfaz gráfica para agregar un nuevo producto.
+ * Esta clase extiende javax.swing.JInternalFrame y proporciona un formulario para ingresar información del producto.
+ * Se incluyen campos para nombre, marca, categoría, precio, cantidad, y fecha de adquisición.
+ * Además, se implementan acciones como agregar y limpiar campos.
+ *
  *
  * @author Benjamin Peñailillo
  */
@@ -256,10 +261,12 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
             String stockText = this.txtStock.getText();
             String fecha_adquisicion = this.txtFecha.getText();
             
+            // Validar que todos los campos estén completo
             if(nombre.isEmpty() || marca.isEmpty() || categoria.isEmpty() || precioText.isEmpty() || stockText.isEmpty() || fecha_adquisicion.isEmpty()){
                 System.out.println("Debe completar todos los campos");
             }else{
                 try{
+                    // Convertir texto a números (precio y stock)
                     int precio = Integer.parseInt(precioText);
                     int stock = Integer.parseInt(stockText);
                 
@@ -267,10 +274,12 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                     produ.agregarProducto();
                 
                 }catch (NumberFormatException e){
+                    // Manejar error si los campos de precio y cantidad no son numéricos
                     System.out.println("LOS CAMPOS PRECIO Y CANTIDAD DEBEN SER NUMERICOS");
                 }
             }
         }catch(Exception e){
+            // Manejar error general al agregar el producto
             System.out.println("Error al agregar el producto: " + e.getMessage());
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
@@ -301,6 +310,8 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
+        //Aca configuramos el boton de limpiar, de manera que al presionar el boton
+        //se limpian las casillas del formulario
         txtNombre.setText(""); 
         txtMarca.setText("");
         txtCategoria.setText("");

@@ -186,18 +186,4 @@ public class Producto {
             System.out.println("Error al eliminar Producto");
         }
     }
-    
-    public void eliminar2(){
-        try{
-            String sql = "delete from Producto where nombre = '"+nombre+"' ";
-            ConexionBD.conectar();
-            ConexionBD.sentencia = ConexionBD.conn.prepareStatement(sql);
-            ConexionBD.sentencia.execute(sql);
-            System.out.println("Producto Eliminada");
-            ConexionBD.desconectar();
-        }catch(Exception e){
-            System.out.println("Error al eliminar Producto");
-        }
-    }
-    
 }
